@@ -1,0 +1,58 @@
+/* Hospital List Page */
+.list-body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #eaf2ff, #f8fbff);
+  font-family: 'Poppins', Arial, sans-serif;
+}
+
+.list-container {
+  background: white;
+  padding: 30px 25px;
+  border-radius: 16px;
+  width: 95%;
+  max-width: 700px;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.page-title {
+  color: #0b6efd;
+  margin-bottom: 20px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* Grid = columns */
+.hospital-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* columns */
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.hospital-card {
+  background: #f1f6ff;
+  padding: 16px 12px;
+  border-radius: 12px;
+  text-decoration: none;
+  color: #0b2d6b;
+  font-weight: 600;
+  box-shadow: 0 4px 10px rgba(11, 110, 253, 0.15);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.hospital-card:hover {
+  background: #0b6efd;
+  color: white;
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 8px 20px rgba(11, 110, 253, 0.35);
+}
+
+.back-link a {
+  text-decoration: none;
+  color: #0b6efd;
+  font-weight: 500;
+}

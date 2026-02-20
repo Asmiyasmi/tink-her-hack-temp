@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Hospital Details</title>
+  <link rel="stylesheet" href="ud style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body class="details-body">
+
+  <div class="details-container">
+    <h2 id="hospitalName" class="page-title">Hospital Name</h2>
+
+    <div class="details-grid">
+      <div class="detail-card">🛏️ Bed Availability</div>
+      <div class="detail-card">💊 Medicine Availability</div>
+      <div class="detail-card">🩸 Blood Availability</div>
+      <div class="detail-card">🏥 OP Sections</div>
+      <div class="detail-card">⭐ Facilities & Services</div>
+      <div class="detail-card">👨‍⚕️ Doctor Availability</div>
+    </div>
+
+    <p class="back-link">
+      ← <a href="user.html">Back to Hospital List</a>
+    </p>
+  </div>
+
+  <script>
+    // Get hospital name from URL
+    const params = new URLSearchParams(window.location.search);
+    const hospital = params.get("name");
+    if (hospital) {
+      document.getElementById("hospitalName").innerText = decodeURIComponent(hospital);
+    }
+  </script>
+
+</body>
+</html>

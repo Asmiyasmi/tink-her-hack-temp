@@ -1,0 +1,54 @@
+/* Hospital Details Page */
+.details-body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #eef4ff, #ffffff);
+  font-family: 'Poppins', Arial, sans-serif;
+}
+
+.details-container {
+  background: white;
+  padding: 30px 25px;
+  border-radius: 16px;
+  width: 95%;
+  max-width: 800px;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.details-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin: 20px 0;
+}
+
+.detail-card {
+  background: #f1f6ff;
+  padding: 18px 14px;
+  border-radius: 14px;
+  font-weight: 600;
+  color: #0b2d6b;
+  box-shadow: 0 4px 10px rgba(11, 110, 253, 0.15);
+  transition: 0.2s ease;
+}
+
+.detail-card:hover {
+  background: #0b6efd;
+  color: white;
+  transform: translateY(-4px);
+}
+
+.page-title {
+  color: #0b6efd;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.back-link a {
+  text-decoration: none;
+  color: #0b6efd;
+  font-weight: 500;
+}

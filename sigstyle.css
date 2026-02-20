@@ -1,0 +1,84 @@
+/* Sign Up Page (Create New Account) */
+.login-body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #eaf2ff, #f8fbff);
+  font-family: 'Poppins', Arial, sans-serif;
+}
+
+.login-container {
+  background: #ffffff;
+  padding: 34px 28px;
+  border-radius: 18px;
+  width: 90%;
+  max-width: 420px;
+  text-align: center;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.18);
+  animation: popIn 0.3s ease;
+}
+
+@keyframes popIn {
+  from {
+    transform: translateY(10px) scale(0.98);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+.login-container h2 {
+  margin-bottom: 18px;
+  color: #0b6efd;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+.login-container input {
+  width: 100%;
+  padding: 12px 12px;
+  margin: 10px 0;
+  border-radius: 10px;
+  border: 1px solid #d0d7e2;
+  outline: none;
+  font-size: 14px;
+  transition: 0.2s ease;
+}
+
+.login-container input:focus {
+  border-color: #0b6efd;
+  box-shadow: 0 0 0 3px rgba(11,110,253,0.12);
+}
+
+.login-container button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 14px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #0b6efd, #3a86ff);
+  color: white;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.login-container button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 18px rgba(11,110,253,0.35);
+}
+
+.back-link {
+  margin-top: 16px;
+  font-size: 14px;
+}
+
+.back-link a {
+  color: #0b6efd;
+  text-decoration: none;
+  font-weight: 500;
+}

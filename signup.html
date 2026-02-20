@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Create Admin Account</title>
+  <link rel="stylesheet" href="sigstyle.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+
+<body class="login-body">
+
+  <div class="login-container">
+    <h2>Create Admin Account</h2>
+
+    <form id="signupAdminForm">
+      <input type="text" id="newAdminId" placeholder="Create Admin ID" required>
+      <input type="password" id="newAdminPass" placeholder="Create Password" required>
+      <input type="password" id="confirmAdminPass" placeholder="Confirm Password" required>
+
+      <button type="submit" class="admin">Create Account</button>
+    </form>
+
+    <h3>Create User Account</h3>
+
+    <form id="signupuserForm">
+      <input type="text" id="newuserId" placeholder="Create user ID" required>
+      <input type="password" id="newuserPass" placeholder="Create Password" required>
+      <input type="password" id="confirmUserPass" placeholder="Confirm Password" required>
+
+      <button type="submit" class="admin">Create Account</button>
+    </form>
+
+    <p class="back-link">
+      ← <a href="index.html">Back</a>
+    </p>
+  </div>
+
+  <script>
+    document.getElementById("signupAdminForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const id = document.getElementById("newAdminId").value.trim();
+      const p1 = document.getElementById("newAdminPass").value;
+      const p2 = document.getElementById("confirmAdminPass").value;
+
+      if (p1.length < 6) {
+        alert("Admin password must be at least 6 characters");
+        return;
+      }
+      if (p1 !== p2) {
+        alert("Passwords do not match");
+        return;
+      }
+
+      localStorage.setItem("demoAdminId", id);
+      localStorage.setItem("demoAdminPass", p1);
+
+      alert("✅ Admin account created. Please login.");
+      window.location.href = "adminlogin.html";
+    });
+
+    document.getElementById("signupuserForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const id = document.getElementById("newuserId").value.trim();
+      const p1 = document.getElementById("newuserPass").value;
+      const p2 = document.getElementById("confirmUserPass").value;
+
+      if (p1.length < 6) {
+        alert("User password must be at least 6 characters");
+        return;
+      }
+      if (p1 !== p2) {
+        alert("Passwords do not match");
+        return;
+      }
+
+      localStorage.setItem("demoUserId", id);
+      localStorage.setItem("demoUserPass", p1);
+
+      alert("✅ User account created. Please login.");
+      window.location.href = "uslogin.html";
+    });
+
+
+  </script>
+
+</body>
+
+</html>

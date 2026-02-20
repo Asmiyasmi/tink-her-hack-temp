@@ -1,0 +1,74 @@
+/* Login Pages (User + Admin) */
+.login-body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #eaf2ff, #f8fbff);
+  font-family: 'Poppins', Arial, sans-serif;
+}
+
+.login-container {
+  background: #ffffff;
+  padding: 32px 26px;
+  border-radius: 16px;
+  width: 90%;
+  max-width: 380px;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.18);
+}
+
+.login-container h2 {
+  margin-bottom: 18px;
+  color: #0b6efd;
+  font-weight: 600;
+}
+
+.login-container input {
+  width: 100%;
+  padding: 12px 10px;
+  margin: 10px 0;
+  border-radius: 8px;
+  border: 1px solid #d0d7e2;
+  outline: none;
+  font-size: 14px;
+}
+
+.login-container input:focus {
+  border-color: #0b6efd;
+  box-shadow: 0 0 0 2px rgba(11,110,253,0.1);
+}
+
+.login-container button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 12px;
+  border: none;
+  border-radius: 8px;
+  background: #0b6efd;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.login-container button.admin {
+  background: #ffb703;
+  color: #000;
+}
+
+.login-container button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 15px rgba(11,110,253,0.25);
+}
+
+.back-link {
+  margin-top: 14px;
+  font-size: 14px;
+}
+
+.back-link a {
+  color: #0b6efd;
+  text-decoration: none;
+  font-weight: 500;
+}

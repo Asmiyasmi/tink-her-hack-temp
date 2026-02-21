@@ -95,7 +95,8 @@ web browser(chrome,firefox)]
 
 #### Screenshots (Add at least 3)
 
-![Screenshot1](c:\Users\subha\Downloads\Screenshot 2026-02-21 at 10-06-43 Smart Hospital.png)
+<img width="1920" height="338" alt="Screenshot 2026-02-21 at 10-06-43 Smart Hospital" src="https://github.com/user-attachments/assets/5b34c0ed-41d8-4a74-90b3-937e4ee46ba1" />
+
 This the main page of the project.This is the website title (main branding).
 
 “Your health, our priority”

@@ -97,13 +97,13 @@ web browser(chrome,firefox)]
 
 <img width="1920" height="338" alt="Screenshot 2026-02-21 at 10-06-43 Smart Hospital" src="https://github.com/user-attachments/assets/5b34c0ed-41d8-4a74-90b3-937e4ee46ba1" />
 
+This is the tagline — it tells users that patient care is the main focus
+
+There are three main buttons:
 This the main page of the project.This is the website title (main branding).
 
 “Your health, our priority”
 
-This is the tagline — it tells users that patient care is the main focus
-
-There are three main buttons:
 
 1️⃣ User Login
 	•	For patients
@@ -138,7 +138,8 @@ The yellow color makes it stand out.
 	•	Password
 	
 
-![Screenshot2](c:\Users\subha\Downloads\Screenshot 2026-02-21 at 10-12-29 Create Admin Account.png )
+<img width="595" height="933" alt="Screenshot 2026-02-21 at 10-12-29 Create Admin Account" src="https://github.com/user-attachments/assets/e89c0909-b827-4c57-9b78-5018a02980ee" />
+
 🔐 1️⃣ Create Admin Account (Top Section)
 
 This section is for hospital administrators.
@@ -173,7 +174,8 @@ Fields:
 🔙 Back Button
 	•	Returns user to the previous page (likely homepage/login page).
 
-![Screenshot3](c:\Users\subha\Downloads\Screenshot 2026-02-21 at 10-15-06 Select Hospital – User.png)
+<img width="937" height="406" alt="Screenshot 2026-02-21 at 10-15-06 Select Hospital – User" src="https://github.com/user-attachments/assets/bf260e86-87d4-4a68-80ef-887730fe2eea" />
+
 This image shows the Hospital Selection Page of our Smart Hospital Website.
 
 Here’s the explanation clearly 👇

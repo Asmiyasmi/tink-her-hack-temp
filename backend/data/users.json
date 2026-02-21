@@ -7,6 +7,14 @@
     {
       "id": "testadmin",
       "password": "testpass1"
+    },
+    {
+      "id": "asmi",
+      "password": "123456"
+    },
+    {
+      "id": "jk",
+      "password": "123456789"
     }
   ],
   "users": [
@@ -21,6 +29,10 @@
     {
       "id": "testuser2",
       "password": "userpass2"
+    },
+    {
+      "id": "reemarinu",
+      "password": "12345678"
     }
   ]
 }

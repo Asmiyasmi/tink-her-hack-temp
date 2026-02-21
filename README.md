@@ -6,23 +6,26 @@
 
 ## Basic Details
 
-### Team Name: [Name]
+### Team Name: [BITNOVA]
 
 ### Team Members
-- Member 1: [Name] - [College]
-- Member 2: [Name] - [College]
+- Member 1: [REEMA RINU] - [CEAL]
+- Member 2: [ASMIYA H] - [CEAL]
 
 ### Hosted Project Link
-[mention your project hosted link here]
+[https://smarthospital-bds7.onrender.com/]
 
 ### Project Description
-[2-3 lines about what your project does]
-
+[Smart Hospital is a comprehensive healthcare management system designed to streamline hospital operations and improve patient care. It provides a centralized platform for managing hospital information and hospital resources. The system features a user-friendly interface for doctors,nurses, and hospital administrators, making it an invaluable tool for modern healthcare management.]
 ### The Problem statement
-[What problem are you solving?]
+[In many situations, patients and their families face difficulty in finding accurate and up-to-date information about hospital resources such as bed availability, medicine stock, blood availability, doctor availability, OP sections, and hospital facilities. This lack of centralized information leads to delays in treatment, confusion during emergencies, and inefficient utilization of healthcare resources.
+Currently, hospital information is often scattered, manually maintained, or not easily accessible to the public. There is no single digital platform where users can quickly view the availability of essential hospital services and resources.
+To address this problem, this project aims to develop a web-based hospital information system that allows users to view real-time hospital details and enables administrators to manage and update hospital resource information through a secure dashboard. This system improves accessibility, reduces time spent searching for hospital services, and enhances overall healthcare service efficiency]
 
 ### The Solution
-[How are you solving it?]
+[In many situations, patients and their families face difficulty in finding accurate and up-to-date information about hospital resources such as bed availability, medicine stock, blood availability, doctor availability, OP sections, and hospital facilities. This lack of centralized information leads to delays in treatment, confusion during emergencies, and inefficient utilization of healthcare resources.
+Currently, hospital information is often scattered, manually maintained, or not easily accessible to the public. There is no single digital platform where users can quickly view the availability of essential hospital services and resources.
+To address this problem, this project aims to develop a web-based hospital information system that allows users to view real-time hospital details and enables administrators to manage and update hospital resource information through a secure dashboard. This system improves accessibility, reduces time spent searching for hospital services, and enhances overall healthcare service efficiency]
 
 ---
 
@@ -31,25 +34,32 @@
 ### Technologies/Components Used
 
 **For Software:**
-- Languages used: [e.g., JavaScript, Python, Java]
-- Frameworks used: [e.g., React, Django, Spring Boot]
-- Libraries used: [e.g., axios, pandas, JUnit]
-- Tools used: [e.g., VS Code, Git, Docker]
+- Languages used: [ JavaScript, HTML,CSS]
+- Frameworks used: [ Express.js]
+- Libraries used: [ cors,nodemon]
+- Tools used: [ VS Code, Git,live server,visual studio code,Node.js,npm,nodemon,]
 
 **For Hardware:**
-- Main components: [List main components]
-- Specifications: [Technical specifications]
-- Tools required: [List tools needed]
+- Main components: [Not Applicable] (Pure Software/Web Project)
+- Specifications: Not Applicable
+- Tools required: Not Applicable
 
 ---
 
 ## Features
 
 List the key features of your project:
-- Feature 1: [Description]
-- Feature 2: [Description]
-- Feature 3: [Description]
-- Feature 4: [Description]
+- **User Authentication** – Separate sign-up and login for Users and Admins with credential validation
+- **Hospital Listing** – Users can view a list of all registered hospitals at a glance
+- **Hospital Details View** – Users can view real-time details of any hospital including bed availability, medicine stock, blood bank units, doctors, OP sections, and facilities
+- **Admin Dashboard** – Admins can securely log in and manage their hospital's information from a dedicated dashboard
+- **Bed Management** – Admins can update total and available bed counts for their hospital
+- **Medicine Stock Management** – Admins can add or update medicine names and stock quantities
+- **Blood Bank Management** – Admins can update blood unit availability by blood type (A+, B+, O+, AB+, etc.)
+- **Doctor Management** – Admins can add or update doctor profiles with name, department, and timing
+- **OP Section Management** – Admins can add or update outpatient department sections and timings
+- **Facilities Management** – Admins can add available hospital facilities (ICU, pharmacy, ambulance, etc.)
+- **REST API Backend** – All data is served and updated through a structured Express.js REST API
 
 ---
 
@@ -70,10 +80,12 @@ List the key features of your project:
 ### For Hardware:
 
 #### Components Required
-[List all components needed with specifications]
+[Laptop/desktop
+internet connection
+web browser(chrome,firefox)]
 
 #### Circuit Setup
-[Explain how to set up the circuit]
+[not applicable]
 
 ---
 
@@ -83,25 +95,144 @@ List the key features of your project:
 
 #### Screenshots (Add at least 3)
 
-![Screenshot1](Add screenshot 1 here with proper name)
-*Add caption explaining what this shows*
+![Screenshot1](c:\Users\subha\Downloads\Screenshot 2026-02-21 at 10-06-43 Smart Hospital.png)
+This the main page of the project.This is the website title (main branding).
 
-![Screenshot2](Add screenshot 2 here with proper name)
-*Add caption explaining what this shows*
+“Your health, our priority”
 
-![Screenshot3](Add screenshot 3 here with proper name)
-*Add caption explaining what this shows*
+This is the tagline — it tells users that patient care is the main focus
+
+There are three main buttons:
+
+1️⃣ User Login
+	•	For patients
+	•	Allows users to
+	•	View bed availability
+	•	View medicine stock
+	•	View blood bank units
+	•	View doctor availability
+	•	View OP sections
+	•	View facilities
+
+⸻
+
+2️⃣ Admin Login (Highlighted in Yellow)
+	•	For hospital management
+	•	Used to:
+	•	Manage doctors
+	•	Monitor bed availability
+	•	Monitor medicine stock
+	•	Monitor blood bank units
+	•	Monitor doctor availability
+	•	Manage hospital facilities
+
+The yellow color makes it stand out.
+
+⸻
+
+3️⃣ Create New Account
+	•	For new users to register
+	•	Collects details like:
+	•	Name
+	•	Password
+	
+
+![Screenshot2](c:\Users\subha\Downloads\Screenshot 2026-02-21 at 10-12-29 Create Admin Account.png )
+🔐 1️⃣ Create Admin Account (Top Section)
+
+This section is for hospital administrators.
+
+Fields:
+	•	Create Admin ID → Unique username for admin
+	•	Create Password → Secure password
+	•	Confirm Password → To verify password matches
+	•	Create Account Button → Submits admin registration
+
+👉 Only hospital management staff should use this section.
+
+⸻
+
+👤 2️⃣ Create User Account (Below Section)
+
+This section is for patients/users.
+
+Fields:
+	•	Create User ID
+	•	Create Password
+	•	Confirm Password
+	•	Create Account Button
+
+👉 Patients use this to:
+	•	Book appointments
+	•	Access reports
+	•	View prescriptions
+
+⸻
+
+🔙 Back Button
+	•	Returns user to the previous page (likely homepage/login page).
+
+![Screenshot3](c:\Users\subha\Downloads\Screenshot 2026-02-21 at 10-15-06 Select Hospital – User.png)
+This image shows the Hospital Selection Page of our Smart Hospital Website.
+
+Here’s the explanation clearly 👇
+
+⸻
+
+🏥 Select a Hospital Page
+
+This page allows the user (patient) to choose a hospital before booking services.
+
+⸻
+
+🔹 Page Title: “Select a Hospital”
+
+This tells the user to pick one hospital from the available options.
+
+⸻
+
+🏨 Hospital Options Displayed
+
+The page shows multiple hospital names as clickable buttons:
+	•	City Care Hospital
+	•	Sunrise Medical Center
+	•	Green Valley Hospital
+	•	Apollo Care Hospital
+	•	Unity Health Center
+	•	LifeLine Hospital
+
+Each button likely redirects the user to:
+	•	Doctor list
+	•	Hospital details
+	•	Available departments
+       •     Blood availability
+
+⸻
+
+🔙 Back to Home
+
+This option allows the user to return to the homepage.
+
+⸻
+
+📌 Purpose of This Page
+
+This page:
+	•	Supports multi-hospital management
+	•	Allows users to select their preferred hospital
+	•	Makes the system scalable
+	•	Separates data based on hospital selection
 
 #### Diagrams
 
 **System Architecture:**
 
-![Architecture Diagram](docs/architecture.png)
+![Architecture Diagram](tink-her-hack-temp/Digital hospital management system architecture.png)
 *Explain your system architecture - components, data flow, tech stack interaction*
 
 **Application Workflow:**
 
-![Workflow](docs/workflow.png)
+![Workflow](tink-her-hack-temp/Digital hospital management system workflow.png)
 *Add caption explaining your workflow*
 
 ---
@@ -137,7 +268,7 @@ List the key features of your project:
 
 #### API Documentation
 
-**Base URL:** `https://api.yourproject.com`
+**Base URL:** https://smarthospital-bds7.onrender.com/
 
 ##### Endpoints
 

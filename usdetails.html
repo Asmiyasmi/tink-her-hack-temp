@@ -1,22 +1,19 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <title>Hospital Details</title>
+  <title>Hospital Details – User</title>
   <link rel="stylesheet" href="ud style.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
+
 <body class="details-body">
 
   <div class="details-container">
-    <h2 id="hospitalName" class="page-title">Hospital Name</h2>
+    <h2 id="hospitalName" class="page-title">Loading…</h2>
 
-    <div class="details-grid">
-      <div class="detail-card">🛏️ Bed Availability</div>
-      <div class="detail-card">💊 Medicine Availability</div>
-      <div class="detail-card">🩸 Blood Availability</div>
-      <div class="detail-card">🏥 OP Sections</div>
-      <div class="detail-card">⭐ Facilities & Services</div>
-      <div class="detail-card">👨‍⚕️ Doctor Availability</div>
+    <div class="details-grid" id="detailsGrid">
+      <p>Fetching data…</p>
     </div>
 
     <p class="back-link">
@@ -25,13 +22,92 @@
   </div>
 
   <script>
-    // Get hospital name from URL
+    const API = "http://localhost:3000/api";
     const params = new URLSearchParams(window.location.search);
-    const hospital = params.get("name");
-    if (hospital) {
-      document.getElementById("hospitalName").innerText = decodeURIComponent(hospital);
+    const id = params.get("id");
+
+    async function loadHospital() {
+      const nameEl = document.getElementById("hospitalName");
+      const grid = document.getElementById("detailsGrid");
+
+      if (!id) {
+        nameEl.textContent = "No hospital selected.";
+        grid.innerHTML = "";
+        return;
+      }
+
+      try {
+        const res = await fetch(`${API}/hospitals/${encodeURIComponent(id)}`);
+        if (!res.ok) { grid.innerHTML = "<p>❌ Hospital not found.</p>"; return; }
+        const h = await res.json();
+        nameEl.textContent = h.name;
+
+        // Beds
+        const bedsCard = `
+          <div class="detail-card">
+            <h3>🛏️ Bed Availability</h3>
+            <p>Total: <strong>${h.beds.total}</strong></p>
+            <p>Available: <strong>${h.beds.available}</strong></p>
+          </div>`;
+
+        // Medicines
+        const medsRows = h.medicines.map(m =>
+          `<li>${m.name} — <strong>${m.stock}</strong> units</li>`
+        ).join("") || "<li>No data</li>";
+        const medsCard = `
+          <div class="detail-card">
+            <h3>💊 Medicine Availability</h3>
+            <ul>${medsRows}</ul>
+          </div>`;
+
+        // Blood Bank
+        const bloodRows = Object.entries(h.bloodBank).map(([type, units]) =>
+          `<li>${type}: <strong>${units}</strong> units</li>`
+        ).join("");
+        const bloodCard = `
+          <div class="detail-card">
+            <h3>🩸 Blood Availability</h3>
+            <ul>${bloodRows}</ul>
+          </div>`;
+
+        // OP Sections
+        const opRows = h.opSections.map(o =>
+          `<li>${o.department} — ${o.time}</li>`
+        ).join("") || "<li>No data</li>";
+        const opCard = `
+          <div class="detail-card">
+            <h3>🏥 OP Sections</h3>
+            <ul>${opRows}</ul>
+          </div>`;
+
+        // Facilities
+        const facRows = h.facilities.map(f => `<li>${f}</li>`).join("") || "<li>No data</li>";
+        const facCard = `
+          <div class="detail-card">
+            <h3>⭐ Facilities &amp; Services</h3>
+            <ul>${facRows}</ul>
+          </div>`;
+
+        // Doctors
+        const docRows = h.doctors.map(d =>
+          `<li><strong>${d.name}</strong> — ${d.department} (${d.timing})</li>`
+        ).join("") || "<li>No data</li>";
+        const docCard = `
+          <div class="detail-card">
+            <h3>👨‍⚕️ Doctor Availability</h3>
+            <ul>${docRows}</ul>
+          </div>`;
+
+        grid.innerHTML = bedsCard + medsCard + bloodCard + opCard + facCard + docCard;
+      } catch {
+        document.getElementById("detailsGrid").innerHTML =
+          "<p>❌ Could not reach server. Is the backend running?</p>";
+      }
     }
+
+    loadHospital();
   </script>
 
 </body>
+
 </html>

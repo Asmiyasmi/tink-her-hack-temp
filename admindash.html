@@ -1,67 +1,209 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>Admin Dashboard - Smart Hospital</title>
   <link rel="stylesheet" href="admindas.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
+
 <body class="admin-body">
 
   <header class="admin-header">
-    <h2>Admin Dashboard</h2>
-    <a href="index.html" class="logout-btn">Logout</a>
+    <h2 id="dashTitle">Admin Dashboard</h2>
+    <a href="admin.html" class="logout-btn">← Back</a>
   </header>
 
   <main class="admin-container">
-
     <div class="admin-grid">
+
+      <!-- Beds -->
       <div class="admin-card">
         <h3>🛏️ Bed Availability</h3>
-        <input type="number" placeholder="Total Beds">
-        <input type="number" placeholder="Available Beds">
-        <button>Update</button>
+        <p id="bedsInfo" style="font-size:0.85rem; margin-bottom:0.5rem;"></p>
+        <input type="number" id="totalBeds" placeholder="Total Beds">
+        <input type="number" id="availableBeds" placeholder="Available Beds">
+        <button onclick="updateBeds()">Update</button>
       </div>
 
+      <!-- Medicines -->
       <div class="admin-card">
         <h3>💊 Medicine Stock</h3>
-        <input type="text" placeholder="Medicine Name">
-        <input type="number" placeholder="Stock Count">
-        <button>Update</button>
+        <p id="medsInfo" style="font-size:0.85rem; margin-bottom:0.5rem;"></p>
+        <input type="text" id="medName" placeholder="Medicine Name">
+        <input type="number" id="medStock" placeholder="Stock Count">
+        <button onclick="updateMedicine()">Update</button>
       </div>
 
+      <!-- Blood Bank -->
       <div class="admin-card">
         <h3>🩸 Blood Bank</h3>
-        <select>
-          <option>A+</option><option>A-</option><option>B+</option><option>B-</option>
-          <option>O+</option><option>O-</option><option>AB+</option><option>AB-</option>
+        <p id="bloodInfo" style="font-size:0.85rem; margin-bottom:0.5rem;"></p>
+        <select id="bloodType">
+          <option>A+</option>
+          <option>A-</option>
+          <option>B+</option>
+          <option>B-</option>
+          <option>O+</option>
+          <option>O-</option>
+          <option>AB+</option>
+          <option>AB-</option>
         </select>
-        <input type="number" placeholder="Units Available">
-        <button>Update</button>
+        <input type="number" id="bloodUnits" placeholder="Units Available">
+        <button onclick="updateBlood()">Update</button>
       </div>
 
+      <!-- Doctors -->
       <div class="admin-card">
         <h3>👨‍⚕️ Doctor Availability</h3>
-        <input type="text" placeholder="Doctor Name">
-        <input type="text" placeholder="Department">
-        <input type="text" placeholder="Timing">
-        <button>Update</button>
+        <p id="docsInfo" style="font-size:0.85rem; margin-bottom:0.5rem;"></p>
+        <input type="text" id="docName" placeholder="Doctor Name">
+        <input type="text" id="docDept" placeholder="Department">
+        <input type="text" id="docTiming" placeholder="Timing (e.g. 9AM–1PM)">
+        <button onclick="updateDoctor()">Update</button>
       </div>
 
+      <!-- OP Sections -->
       <div class="admin-card">
         <h3>🏥 OP Sections</h3>
-        <input type="text" placeholder="Department">
-        <input type="text" placeholder="OP Time">
-        <button>Update</button>
+        <p id="opInfo" style="font-size:0.85rem; margin-bottom:0.5rem;"></p>
+        <input type="text" id="opDept" placeholder="Department">
+        <input type="text" id="opTime" placeholder="OP Time">
+        <button onclick="updateOP()">Update</button>
       </div>
 
+      <!-- Facilities -->
       <div class="admin-card">
-        <h3>⭐ Facilities & Services</h3>
-        <input type="text" placeholder="Facility Name">
-        <button>Add Facility</button>
+        <h3>⭐ Facilities &amp; Services</h3>
+        <p id="facInfo" style="font-size:0.85rem; margin-bottom:0.5rem;"></p>
+        <input type="text" id="facName" placeholder="Facility Name">
+        <button onclick="addFacility()">Add Facility</button>
       </div>
-    </div>
 
+    </div>
   </main>
 
+  <script>
+    const API = "http://localhost:3000/api";
+    const params = new URLSearchParams(window.location.search);
+    const hospId = params.get("id");
+
+    // ── helpers ──────────────────────────────────────────────────────────────
+    async function apiFetch(path, method = "GET", body = null) {
+      const opts = { method, headers: { "Content-Type": "application/json" } };
+      if (body) opts.body = JSON.stringify(body);
+      const res = await fetch(`${API}${path}`, opts);
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.message || "Server error");
+      return data;
+    }
+
+    function ok(msg) { alert("✅ " + msg); }
+    function err(msg) { alert("❌ " + msg); }
+
+    // ── load current data ────────────────────────────────────────────────────
+    async function loadHospital() {
+      if (!hospId) { document.getElementById("dashTitle").textContent = "No hospital selected."; return; }
+      try {
+        const h = await apiFetch(`/hospitals/${encodeURIComponent(hospId)}`);
+        document.getElementById("dashTitle").textContent = `Dashboard — ${h.name}`;
+
+        document.getElementById("bedsInfo").textContent =
+          `Current: ${h.beds.total} total, ${h.beds.available} available`;
+
+        document.getElementById("medsInfo").innerHTML =
+          h.medicines.map(m => `${m.name}: ${m.stock}`).join(" | ") || "None";
+
+        document.getElementById("bloodInfo").innerHTML =
+          Object.entries(h.bloodBank).map(([t, u]) => `${t}:${u}`).join(" | ");
+
+        document.getElementById("docsInfo").innerHTML =
+          h.doctors.map(d => `${d.name} (${d.department})`).join(" | ") || "None";
+
+        document.getElementById("opInfo").innerHTML =
+          h.opSections.map(o => `${o.department} — ${o.time}`).join(" | ") || "None";
+
+        document.getElementById("facInfo").innerHTML =
+          h.facilities.join(", ") || "None";
+      } catch (e) {
+        document.getElementById("dashTitle").textContent = "Error loading data.";
+      }
+    }
+
+    // ── update functions ─────────────────────────────────────────────────────
+    async function updateBeds() {
+      const total = document.getElementById("totalBeds").value;
+      const available = document.getElementById("availableBeds").value;
+      if (!total || !available) { err("Fill in both bed fields."); return; }
+      try {
+        await apiFetch(`/hospitals/${encodeURIComponent(hospId)}/beds`, "PUT", { total, available });
+        ok("Beds updated!"); loadHospital();
+      } catch (e) { err(e.message); }
+    }
+
+    async function updateMedicine() {
+      const name = document.getElementById("medName").value.trim();
+      const stock = document.getElementById("medStock").value;
+      if (!name || !stock) { err("Fill in medicine name and stock."); return; }
+      try {
+        await apiFetch(`/hospitals/${encodeURIComponent(hospId)}/medicines`, "PUT", { name, stock });
+        ok("Medicine updated!"); loadHospital();
+        document.getElementById("medName").value = "";
+        document.getElementById("medStock").value = "";
+      } catch (e) { err(e.message); }
+    }
+
+    async function updateBlood() {
+      const type = document.getElementById("bloodType").value;
+      const units = document.getElementById("bloodUnits").value;
+      if (!units) { err("Enter units available."); return; }
+      try {
+        await apiFetch(`/hospitals/${encodeURIComponent(hospId)}/bloodbank`, "PUT", { type, units });
+        ok("Blood bank updated!"); loadHospital();
+        document.getElementById("bloodUnits").value = "";
+      } catch (e) { err(e.message); }
+    }
+
+    async function updateDoctor() {
+      const name = document.getElementById("docName").value.trim();
+      const department = document.getElementById("docDept").value.trim();
+      const timing = document.getElementById("docTiming").value.trim();
+      if (!name || !department || !timing) { err("Fill in all doctor fields."); return; }
+      try {
+        await apiFetch(`/hospitals/${encodeURIComponent(hospId)}/doctors`, "PUT", { name, department, timing });
+        ok("Doctor updated!"); loadHospital();
+        document.getElementById("docName").value = "";
+        document.getElementById("docDept").value = "";
+        document.getElementById("docTiming").value = "";
+      } catch (e) { err(e.message); }
+    }
+
+    async function updateOP() {
+      const department = document.getElementById("opDept").value.trim();
+      const time = document.getElementById("opTime").value.trim();
+      if (!department || !time) { err("Fill in department and OP time."); return; }
+      try {
+        await apiFetch(`/hospitals/${encodeURIComponent(hospId)}/opsections`, "PUT", { department, time });
+        ok("OP section updated!"); loadHospital();
+        document.getElementById("opDept").value = "";
+        document.getElementById("opTime").value = "";
+      } catch (e) { err(e.message); }
+    }
+
+    async function addFacility() {
+      const facility = document.getElementById("facName").value.trim();
+      if (!facility) { err("Enter a facility name."); return; }
+      try {
+        await apiFetch(`/hospitals/${encodeURIComponent(hospId)}/facilities`, "PUT", { facility });
+        ok("Facility added!"); loadHospital();
+        document.getElementById("facName").value = "";
+      } catch (e) { err(e.message); }
+    }
+
+    // ── init ─────────────────────────────────────────────────────────────────
+    loadHospital();
+  </script>
+
 </body>
+
 </html>

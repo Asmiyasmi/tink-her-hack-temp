@@ -36,53 +36,63 @@
   </div>
 
   <script>
-    document.getElementById("signupAdminForm").addEventListener("submit", function (e) {
+    const API = "http://localhost:3000/api";
+
+    document.getElementById("signupAdminForm").addEventListener("submit", async function (e) {
       e.preventDefault();
 
       const id = document.getElementById("newAdminId").value.trim();
       const p1 = document.getElementById("newAdminPass").value;
       const p2 = document.getElementById("confirmAdminPass").value;
 
-      if (p1.length < 6) {
-        alert("Admin password must be at least 6 characters");
-        return;
-      }
-      if (p1 !== p2) {
-        alert("Passwords do not match");
-        return;
-      }
+      if (p1.length < 6) { alert("Admin password must be at least 6 characters"); return; }
+      if (p1 !== p2) { alert("Passwords do not match"); return; }
 
-      localStorage.setItem("demoAdminId", id);
-      localStorage.setItem("demoAdminPass", p1);
-
-      alert("✅ Admin account created. Please login.");
-      window.location.href = "adminlogin.html";
+      try {
+        const res = await fetch(`${API}/signup/admin`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ id, password: p1 })
+        });
+        const data = await res.json();
+        if (res.ok) {
+          alert("✅ Admin account created. Please login.");
+          window.location.href = "adminlogin.html";
+        } else {
+          alert("❌ " + data.message);
+        }
+      } catch {
+        alert("❌ Could not reach server. Is the backend running?");
+      }
     });
 
-    document.getElementById("signupuserForm").addEventListener("submit", function (e) {
+    document.getElementById("signupuserForm").addEventListener("submit", async function (e) {
       e.preventDefault();
 
       const id = document.getElementById("newuserId").value.trim();
       const p1 = document.getElementById("newuserPass").value;
       const p2 = document.getElementById("confirmUserPass").value;
 
-      if (p1.length < 6) {
-        alert("User password must be at least 6 characters");
-        return;
-      }
-      if (p1 !== p2) {
-        alert("Passwords do not match");
-        return;
-      }
+      if (p1.length < 6) { alert("User password must be at least 6 characters"); return; }
+      if (p1 !== p2) { alert("Passwords do not match"); return; }
 
-      localStorage.setItem("demoUserId", id);
-      localStorage.setItem("demoUserPass", p1);
-
-      alert("✅ User account created. Please login.");
-      window.location.href = "uslogin.html";
+      try {
+        const res = await fetch(`${API}/signup/user`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ id, password: p1 })
+        });
+        const data = await res.json();
+        if (res.ok) {
+          alert("✅ User account created. Please login.");
+          window.location.href = "uslogin.html";
+        } else {
+          alert("❌ " + data.message);
+        }
+      } catch {
+        alert("❌ Could not reach server. Is the backend running?");
+      }
     });
-
-
   </script>
 
 </body>

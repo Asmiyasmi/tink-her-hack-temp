@@ -1,0 +1,283 @@
+{
+    "hospitals": [
+        {
+            "id": "city-care",
+            "name": "City Care Hospital",
+            "beds": {
+                "total": 100,
+                "available": 30
+            },
+            "medicines": [
+                {
+                    "name": "Paracetamol",
+                    "stock": 200
+                },
+                {
+                    "name": "Amoxicillin",
+                    "stock": 150
+                }
+            ],
+            "bloodBank": {
+                "A+": 10,
+                "A-": 5,
+                "B+": 8,
+                "B-": 3,
+                "O+": 15,
+                "O-": 4,
+                "AB+": 6,
+                "AB-": 2
+            },
+            "doctors": [
+                {
+                    "name": "Dr. Sharma",
+                    "department": "Cardiology",
+                    "timing": "9AM - 1PM"
+                },
+                {
+                    "name": "Dr. Singh",
+                    "department": "Orthopedics",
+                    "timing": "2PM - 6PM"
+                }
+            ],
+            "opSections": [
+                {
+                    "department": "General OPD",
+                    "time": "8AM - 12PM"
+                },
+                {
+                    "department": "Pediatrics",
+                    "time": "10AM - 2PM"
+                }
+            ],
+            "facilities": [
+                "ICU",
+                "Pharmacy",
+                "Ambulance 24/7",
+                "Lab",
+                "X-Ray"
+            ]
+        },
+        {
+            "id": "sunrise-medical",
+            "name": "Sunrise Medical Center",
+            "beds": {
+                "total": 80,
+                "available": 20
+            },
+            "medicines": [
+                {
+                    "name": "Ibuprofen",
+                    "stock": 180
+                },
+                {
+                    "name": "Metformin",
+                    "stock": 90
+                }
+            ],
+            "bloodBank": {
+                "A+": 8,
+                "A-": 3,
+                "B+": 12,
+                "B-": 2,
+                "O+": 10,
+                "O-": 3,
+                "AB+": 4,
+                "AB-": 1
+            },
+            "doctors": [
+                {
+                    "name": "Dr. Patel",
+                    "department": "Neurology",
+                    "timing": "9AM - 12PM"
+                }
+            ],
+            "opSections": [
+                {
+                    "department": "ENT",
+                    "time": "9AM - 1PM"
+                }
+            ],
+            "facilities": [
+                "MRI",
+                "CT Scan",
+                "Blood Bank",
+                "Emergency"
+            ]
+        },
+        {
+            "id": "green-valley",
+            "name": "Green Valley Hospital",
+            "beds": {
+                "total": 60,
+                "available": 15
+            },
+            "medicines": [
+                {
+                    "name": "Aspirin",
+                    "stock": 300
+                }
+            ],
+            "bloodBank": {
+                "A+": 6,
+                "A-": 2,
+                "B+": 5,
+                "B-": 1,
+                "O+": 9,
+                "O-": 2,
+                "AB+": 3,
+                "AB-": 1
+            },
+            "doctors": [
+                {
+                    "name": "Dr. Rao",
+                    "department": "Dermatology",
+                    "timing": "10AM - 2PM"
+                }
+            ],
+            "opSections": [
+                {
+                    "department": "Skin & Hair",
+                    "time": "10AM - 3PM"
+                }
+            ],
+            "facilities": [
+                "Pharmacy",
+                "Physiotherapy",
+                "Yoga Center"
+            ]
+        },
+        {
+            "id": "apollo-care",
+            "name": "Apollo Care Hospital",
+            "beds": {
+                "total": 200,
+                "available": 60
+            },
+            "medicines": [
+                {
+                    "name": "Atorvastatin",
+                    "stock": 400
+                }
+            ],
+            "bloodBank": {
+                "A+": 20,
+                "A-": 8,
+                "B+": 15,
+                "B-": 5,
+                "O+": 25,
+                "O-": 7,
+                "AB+": 10,
+                "AB-": 3
+            },
+            "doctors": [
+                {
+                    "name": "Dr. Kumar",
+                    "department": "Oncology",
+                    "timing": "8AM - 12PM"
+                },
+                {
+                    "name": "Dr. Mehta",
+                    "department": "Gastrology",
+                    "timing": "1PM - 5PM"
+                }
+            ],
+            "opSections": [
+                {
+                    "department": "Cancer Care",
+                    "time": "8AM - 2PM"
+                }
+            ],
+            "facilities": [
+                "Radiation Therapy",
+                "Bone Marrow Transplant",
+                "ICU",
+                "NICU"
+            ]
+        },
+        {
+            "id": "unity-health",
+            "name": "Unity Health Center",
+            "beds": {
+                "total": 50,
+                "available": 10
+            },
+            "medicines": [
+                {
+                    "name": "Cetirizine",
+                    "stock": 100
+                }
+            ],
+            "bloodBank": {
+                "A+": 5,
+                "A-": 2,
+                "B+": 4,
+                "B-": 1,
+                "O+": 7,
+                "O-": 2,
+                "AB+": 2,
+                "AB-": 1
+            },
+            "doctors": [
+                {
+                    "name": "Dr. Nair",
+                    "department": "Psychiatry",
+                    "timing": "11AM - 3PM"
+                }
+            ],
+            "opSections": [
+                {
+                    "department": "Mental Health",
+                    "time": "11AM - 4PM"
+                }
+            ],
+            "facilities": [
+                "Counseling",
+                "Rehab Center",
+                "Pharmacy"
+            ]
+        },
+        {
+            "id": "lifeline",
+            "name": "LifeLine Hospital",
+            "beds": {
+                "total": 120,
+                "available": 45
+            },
+            "medicines": [
+                {
+                    "name": "Omeprazole",
+                    "stock": 250
+                }
+            ],
+            "bloodBank": {
+                "A+": 12,
+                "A-": 4,
+                "B+": 9,
+                "B-": 2,
+                "O+": 18,
+                "O-": 5,
+                "AB+": 7,
+                "AB-": 2
+            },
+            "doctors": [
+                {
+                    "name": "Dr. Verma",
+                    "department": "Urology",
+                    "timing": "9AM - 1PM"
+                }
+            ],
+            "opSections": [
+                {
+                    "department": "Urology OPD",
+                    "time": "9AM - 12PM"
+                }
+            ],
+            "facilities": [
+                "Dialysis",
+                "Laparoscopy",
+                "Emergency",
+                "Ambulance"
+            ]
+        }
+    ]
+}

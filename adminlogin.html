@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>Admin Login - Smart Hospital</title>
   <link rel="stylesheet" href="adminloginstyles.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
+
 <body class="login-body">
 
   <div class="login-container">
@@ -19,26 +21,31 @@
     <p class="back-link">← <a href="index.html">Back to Home</a></p>
   </div>
 
- <script>
-  const DEFAULT_ADMIN_ID = "admin";
-  const DEFAULT_ADMIN_PASS = "admin123";
+  <script>
+    const API = "http://localhost:3000/api";
 
-  document.getElementById("adminForm").addEventListener("submit", function(e) {
-    e.preventDefault();
+    document.getElementById("adminForm").addEventListener("submit", async function (e) {
+      e.preventDefault();
 
-    const id = document.getElementById("adminId").value.trim();
-    const pass = document.getElementById("adminPassword").value;
+      const id = document.getElementById("adminId").value.trim();
+      const pass = document.getElementById("adminPassword").value;
 
-    const savedId = localStorage.getItem("demoAdminId");
-    const savedPass = localStorage.getItem("demoAdminPass");
-
-    if (
-      (id === DEFAULT_ADMIN_ID && pass === DEFAULT_ADMIN_PASS) ||
-      (id === savedId && pass === savedPass)
-    ) {
-      window.location.href = "admindash.html";
-    } else {
-      alert("❌ Invalid Admin ID or Password");
-    }
-  });
-</script>
+      try {
+        const res = await fetch(`${API}/login/admin`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ id, password: pass })
+        });
+        const data = await res.json();
+        if (res.ok) {
+          // Store logged-in admin id for the dashboard to use
+          sessionStorage.setItem("adminId", id);
+          window.location.href = "admin.html";
+        } else {
+          alert("❌ " + data.message);
+        }
+      } catch {
+        alert("❌ Could not reach server. Is the backend running?");
+      }
+    });
+  </script>

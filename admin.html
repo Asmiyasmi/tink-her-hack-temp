@@ -1,21 +1,19 @@
+<!DOCTYPE html>
 <html>
+
 <head>
-  <title>Select <!Hospital</title>
+  <title>Select Hospital – Admin</title>
   <link rel="stylesheet" href="admin style.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
+
 <body class="list-body">
 
   <div class="list-container">
     <h2 class="page-title">Select a Hospital</h2>
 
-    <div class="hospital-grid">
-      <a href="addetails.html" class="hospital-card">City Care Hospital</a>
-      <a href="addetails.html" class="hospital-card">Sunrise Medical Center</a>
-      <a href="addetails.html" class="hospital-card">Green Valley Hospital</a>
-      <a href="addetails.html" class="hospital-card">Apollo Care Hospital</a>
-      <a href="addetails.html" class="hospital-card">Unity Health Center</a>
-      <a href="addetails.html" class="hospital-card">LifeLine Hospital</a>
+    <div class="hospital-grid" id="hospitalGrid">
+      <p>Loading hospitals…</p>
     </div>
 
     <p class="back-link">
@@ -23,5 +21,25 @@
     </p>
   </div>
 
+  <script>
+    const API = "http://localhost:3000/api";
+
+    async function loadHospitals() {
+      const grid = document.getElementById("hospitalGrid");
+      try {
+        const res = await fetch(`${API}/hospitals`);
+        const hospitals = await res.json();
+        grid.innerHTML = hospitals.map(h =>
+          `<a href="addetails.html?id=${encodeURIComponent(h.id)}" class="hospital-card">${h.name}</a>`
+        ).join("");
+      } catch {
+        grid.innerHTML = "<p>❌ Could not load hospitals. Is the backend running?</p>";
+      }
+    }
+
+    loadHospitals();
+  </script>
+
 </body>
+
 </html>
